@@ -2,9 +2,9 @@
 
 ![](https://img.shields.io/badge/Sun%20Yat--sen%20University-005826) ![](https://img.shields.io/badge/Typst-239DAD)
 
-适用于中山大学的一个简单的，自己正在使用的$\LaTeX$报告模板。当然这**不能**适用于学位论文等正式论文的编写，但是对于小型的报告还是非常适用的。
+适用于中山大学的一个简单的，自己正在使用的**Typst**报告模板。当然这**不能**适用于学位论文等正式论文的编写，但是对于小型的报告还是非常适用的。
 
-本文相同的模板还有几乎一模一样的<font color=#008080>$\LaTeX$</font>的版本！详见[SYSU-Report-$\LaTeX$](https://github.com/lankoestee/sysu-report-latex)。
+本文相同的模板还有几乎一模一样的**LaTeX**的版本！详见[SYSU-Report-LaTeX](https://github.com/lankoestee/sysu-report-latex)。
 
 ## 快速使用
 
