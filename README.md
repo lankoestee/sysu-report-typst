@@ -1,18 +1,23 @@
-# SYSU-Typst
+# SYSU-Report-Typst
 
 ![](https://img.shields.io/badge/Sun%20Yat--sen%20University-005826) ![](https://img.shields.io/badge/Typst-239DAD)
 
-适用于中山大学的一个简单的，自己正在使用的Typst报告模板。
+适用于中山大学的一个简单的，自己正在使用的$\LaTeX$报告模板。当然这**不能**适用于学位论文等正式论文的编写，但是对于小型的报告还是非常适用的。
+
+本文相同的模板还有几乎一模一样的<font color=#008080>$\LaTeX$</font>的版本！详见[SYSU-Report-$\LaTeX$](https://github.com/lankoestee/sysu-report-latex)。
 
 ## 快速使用
 
 ```bash
-git clone https://github.com/lankoestee/sysu-typst
+git clone https://github.com/lankoestee/sysu-report-typst
 ```
 
-`git`下来之后，直接编辑里面的`report.typ`。里面包括了一些`founder.typ`模板文件的预制变量，可以根据自己的需求进行修改。
+克隆后，直接编辑里面的`report.typ`。里面包括了一些`founder.typ`模板文件的预制变量，可以根据自己的需求进行修改。
 
 当然对于不是中山大学的使用者而言，你可以修改`figure/badge.svg`为自己学校或单位的正方形图标，修改`figure/badge-horizonal.svg`为自己学校或单位的长方形图标。
+
+> [!TIP]
+> 本仓库中的`image`文件夹**不是**必要的，仅为了展示README中的图片，克隆后推荐删除。
 
 ## 模板特点
 
