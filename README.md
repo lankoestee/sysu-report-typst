@@ -4,7 +4,9 @@
 
 适用于中山大学的一个简单的，自己正在使用的**Typst**报告模板。当然这**不能**适用于学位论文等正式论文的编写，但是对于小型的报告还是非常适用的。
 
-本文相同的模板还有几乎一模一样的**LaTeX**的版本！详见[SYSU-Report-LaTeX](https://github.com/lankoestee/sysu-report-latex)。
+本仓库相同的模板还有几乎一模一样的**LaTeX**的版本！详见[SYSU-Report-LaTeX](https://github.com/lankoestee/sysu-report-latex)。
+
+该模板也是本人报告写作方法的一部分，详见[舒适写作大法 | 大聪明de小妙招 (cleversmall.com)](https://cleversmall.com/posts/e06f63c1/)。
 
 ## 快速使用
 
