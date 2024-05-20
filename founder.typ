@@ -1,6 +1,5 @@
 #import "@preview/cuti:0.2.1": show-cn-fakebold
-#import "@preview/algo:0.3.3": algo, i, d, comment, code
-#import "@preview/i-figured:0.2.4"
+#import "@preview/algo:0.3.3": algo
 
 #let conf(
   title: "Typst测试样板",
@@ -29,16 +28,19 @@
   show raw: set text(
     font: ("Monaco", "Consolas", "FZHei-B01S")
   )
-  show raw.line: it => {
-    text(fill: gray)[#it.number]
-    h(1em)
-    it.body
+
+  show raw.where(block: true): it =>{
+    show raw.line: il => {
+      text(fill: gray)[#il.number]
+      h(1em)
+      il.body
+    }
+    block(
+      fill: luma(240),
+      inset: 1em,
+      width: 100%,
+    )[#it]
   }
-  show raw: block.with(
-    fill: luma(240),
-    inset: 1em,
-    width: 100%,
-  )
 
   set document(
     title: title,
@@ -58,7 +60,7 @@
   text(28pt, font: "FZDaHei-B02S", title)
   v(1.2em, weak: true)
   text(20pt, font: "FZHei-B01S", subtitle)
-  v(2em)
+  v(1em)
 
   text(16pt, grid(
     columns: (6em, 16em),
@@ -155,42 +157,62 @@
 
   show ref: it => {
     let el = it.element
-    if el.func() == heading{
-      set text(fill: red)
-      link(it.target)[
-      #numbering(
-        el.numbering,
-        ..counter(heading).at(el.location())
-      )节
-      ]
-    }
-    else if el.func() == figure{
-      set text(fill: red)
-      it
-    }
-    else if el.func() == table{
-      set text(fill: red)
-      it
-    }
-    else if el.func() == math.equation{
-      set text(fill: red)
-      link(it.target)[
-      #numbering(
-        el.numbering,
-        ..counter(math.equation).at(el.location())
-      )
-      ]
-    }
-    else if el.func() == cite{
-      set text(fill: green)
-      it
+    if el != none{
+      if el.func() == heading{
+        set text(fill: red)
+        link(it.target)[
+        #numbering(
+          el.numbering,
+          ..counter(heading).at(el.location())
+        )节
+        #h(-0.3em)
+        ]
+      }
+      else if el.func() == figure{
+        set text(fill: red)
+        h(-0.3em)
+        it
+      }
+      else if el.func() == math.equation{
+        set text(fill: red)
+        link(it.target)[
+        #numbering(
+          el.numbering,
+          ..counter(math.equation).at(el.location())
+        )
+        ]
+      }
+      else{
+        it
+      }
     }
     else{
+      set text(fill: green)
       it
     }
   }
 
   set math.mat(delim: "[")
+
+  set table(stroke: none)
+
+  // show table.cell.where(x: 0): strong
+  show table.cell.where(y: 0): strong
+
+  show figure: it => {
+    let ib = it.body
+    if ib.func() == table{
+      set align(center)
+      it.caption
+      v(-.5em)
+      it.body
+    }
+    else {
+      it
+    }
+  }
+
+  set bibliography(title: "参考文献")
 
   counter(page).update(2)
 
@@ -208,3 +230,7 @@
   text(weight: "bold")[#body]
   h(1em)
 }
+
+#let toprule = table.hline(stroke: 1.5pt)
+#let midrule = table.hline(stroke: .75pt)
+#let bottomrule = table.hline(stroke: 1.5pt)

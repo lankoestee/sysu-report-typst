@@ -24,10 +24,13 @@ git clone https://github.com/lankoestee/sysu-report-typst
 ## 模板特点
 
 - 使用了CMU字体作为英文标准字体，使用方正系列字体作为中文标准字体，由于方正系列的字体都只有单一的粗细大小，因此可能需要下载多种字体；
-- 使用Monaco字体作为代码标准字体；
+- 使用Monaco字体作为代码标准字体，并为多行代码标注了行号，加深了背景；
 - 为简单朴素的Typst添加了一个封面，封面中的信息内容可以自己控制；
 - 还添加了一个目录，自动目录从一级标题收录到三级标题，四级及以下的标题不再收录；
+- 将目录编号为第一页，封面不做编号；
+- 可以加入了标准三线表的对应样式；
 - 添加了一个简单的页眉；
+- 添加了一些简单的可用样式。
 
 ## 所需字体
 
@@ -46,5 +49,9 @@ git clone https://github.com/lankoestee/sysu-report-typst
 ## 模板展示
 
 ![](./image/report_1.png)
+
 ![](./image/report_2.png)
+
 ![](./image/report_3.png)
+
+![](./image/report_4.png)
