@@ -1,4 +1,6 @@
 #import "@preview/cuti:0.2.1": show-cn-fakebold
+#import "@preview/algo:0.3.3": algo, i, d, comment, code
+#import "@preview/i-figured:0.2.4"
 
 #let conf(
   title: "Typst测试样板",
@@ -21,9 +23,21 @@
   set text(
     font: ("CMU Serif", "FZShuSong-Z01S"),
     size: 12pt,
+    cjk-latin-spacing: auto,
+    bottom-edge: "descender",
   )
   show raw: set text(
     font: ("Monaco", "Consolas", "FZHei-B01S")
+  )
+  show raw.line: it => {
+    text(fill: gray)[#it.number]
+    h(1em)
+    it.body
+  }
+  show raw: block.with(
+    fill: luma(240),
+    inset: 1em,
+    width: 100%,
   )
 
   set document(
@@ -31,13 +45,14 @@
     author: author,
     date: auto,
   )
-  set heading(numbering: "1.1")
+  set heading(numbering: "1.1", supplement: none)
   show heading: set block(above: 1.4em, below: 1em)
 
   set align(center)
 
   figure(
-    image("figure/badge.svg", width: 60%, fit: "cover")
+    image("figure/badge.svg", width: 60%, fit: "cover"),
+    numbering: none
   )
 
   text(28pt, font: "FZDaHei-B02S", title)
@@ -101,6 +116,8 @@
 
   pagebreak()
 
+  set math.equation(numbering: "(1)", supplement: none)
+
   set page(
     numbering: "1",
     header: [
@@ -112,7 +129,8 @@
       stroke: (bottom: 1pt),
       figure(
         image("figure/badge-horizonal.svg", width: 90pt),
-        placement: bottom
+        placement: bottom,
+        numbering: none
       ),
       title,
     )],
@@ -129,15 +147,64 @@
   footer: [1])
 
   pagebreak()
-
   show heading.where(level: 1): set align(center)
   show heading.where(level: 1): set text(font: ("CMU Serif", "FZXiaoBiaoSong-B05S"))
   show heading.where(level: 2): set text(font: ("CMU Sans Serif", "FZHei-B01S"))
   show heading.where(level: 3): set text(font: ("CMU Sans Serif", "FZHei-B01S"))
   show heading.where(level: 4): set text(font: ("CMU Sans Serif", "FZHei-B01S"))
 
+  show ref: it => {
+    let el = it.element
+    if el.func() == heading{
+      set text(fill: red)
+      link(it.target)[
+      #numbering(
+        el.numbering,
+        ..counter(heading).at(el.location())
+      )节
+      ]
+    }
+    else if el.func() == figure{
+      set text(fill: red)
+      it
+    }
+    else if el.func() == table{
+      set text(fill: red)
+      it
+    }
+    else if el.func() == math.equation{
+      set text(fill: red)
+      link(it.target)[
+      #numbering(
+        el.numbering,
+        ..counter(math.equation).at(el.location())
+      )
+      ]
+    }
+    else if el.func() == cite{
+      set text(fill: green)
+      it
+    }
+    else{
+      it
+    }
+  }
+
+  set math.mat(delim: "[")
+
   counter(page).update(2)
 
   set align(left)
   columns(cols, doc)
+}
+
+#let task(body, inset: 1em, fill: rgb("#DFDFFF")) = {
+  box(width: 100%, inset: inset, fill: fill)[
+    #body
+  ]
+}
+
+#let para(body) = {
+  text(weight: "bold")[#body]
+  h(1em)
 }
